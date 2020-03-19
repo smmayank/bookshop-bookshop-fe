@@ -12,7 +12,8 @@ COPY package*.json ./
 RUN npm ci --only=production
 
 # Bundle app source
-COPY . .
+COPY components components
+COPY pages pages
 
 EXPOSE 3000
 
