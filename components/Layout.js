@@ -1,4 +1,3 @@
-
 import Header from './Header';
 
 const layoutStyle = {
@@ -7,13 +6,11 @@ const layoutStyle = {
     border: '1px solid #DDD'
 };
 
-const Layout = (Page) => {
-    return () => (
-        <div style={layoutStyle}>
-            <Header />
-            <Page />
-        </div>
-    );
-};
+const Layout = props => (
+    <div style={layoutStyle}>
+        <Header />
+        {props.children}
+    </div>
+);
 
 export default Layout;

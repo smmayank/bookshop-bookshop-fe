@@ -2,14 +2,25 @@ import Layout from '../components/Layout';
 import PostLink from '../components/PostLink';
 import List from '../components/List';
 import Title from '../components/Title';
+import fetch from 'isomorphic-unfetch';
 
-const posts = ['Hello Next.js', 'Learn Next.js is awesome', 'Hello Next.js'];
+const Page = (props) => {
+    const { shows } = props;
+    const links = shows.map((value, index) => <PostLink key={value.id} title={value.name} id={value.id} />);
+    return (
+        <Layout>
+            {Title('Batman TV Shows')}
+            {List(links)}
+        </Layout>
+    );
+}
 
-const Page = () => (
-    <div>
-        {Title('My Blog')}
-        {List(posts.map((value, index) => <PostLink title={value} id={index} />))}
-    </div>
-);
+Page.getInitialProps = async function () {
+    const res = await fetch('https://api.tvmaze.com/search/shows?q=batman');
+    const entries = await res.json();
+    return {
+        shows: entries.map(entry => entry.show)
+    };
+};
 
-export default Layout(Page);
+export default Page;
