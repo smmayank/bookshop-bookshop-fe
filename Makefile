@@ -10,3 +10,9 @@ build:
 
 clean:
 	$(COMPOSE) down
+
+logs:
+	$(COMPOSE) logs -f
+
+top:
+	$(COMPOSE) top
