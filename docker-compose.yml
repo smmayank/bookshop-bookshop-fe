@@ -1,19 +1,19 @@
 version: '3.5'
 
 services:
-  bookshop-bookshop-fe:
-    build: .
-    image : 'bookshop/bookshop-fe:dev'
-    ports:
-      - '80:3000'
-    networks:
-      - 'bookshop-fe'
-      - 'bookshop-be'
+    bookshop-bookshop-fe:
+        build: .
+        image: 'bookshop/bookshop-fe:dev'
+        ports:
+            - '80:3000'
+        networks:
+            - 'bookshop-fe'
+            - 'bookshop-be'
 
 networks:
-  bookshop-be:
-    name: 'bookshop-be'
-    driver: 'bridge'
-  bookshop-fe:
-    name: 'bookshop-fe'
-    driver: 'bridge'
+    bookshop-be:
+        name: 'bookshop-be'
+        driver: 'bridge'
+    bookshop-fe:
+        name: 'bookshop-fe'
+        driver: 'bridge'
