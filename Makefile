@@ -1,12 +1,11 @@
-COMPOSE='docker-compose'
+COMPOSE=docker-compose
+COMMAND=up
+ARGS=--build --detach
 
 all: start
 
-start: build
-	$(COMPOSE) up --detach
-
-build:
-	$(COMPOSE) build
+start:
+	$(COMPOSE) $(COMMAND) $(ARGS)
 
 clean:
 	$(COMPOSE) down
